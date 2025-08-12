@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
+    <title>App de Música</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo à Minha Página</h1>
-    </header>
-
-    <main>
-        <section>
-            <h2>Sobre o Projeto</h2>
-            <p>Este é um exemplo de página com HTML, CSS e JavaScript separados.</p>
-            <button id="changeTextBtn">Clique aqui para mudar o texto!</button>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Minha Página. Todos os direitos reservados.</p>
-    </footer>
+    <div class="player-container">
+        <h1>Meu App de Música</h1>
+        
+        <div class="music-player">
+            <h2 id="songTitle">Música 1</h2>
+            
+            <audio id="audioPlayer" src="musicas/musica.mp3" preload="auto"></audio>
+            
+            <div class="controls">
+                <button id="playPauseBtn">▶️</button>
+                <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+                <span id="volumeLabel">Volume: 100%</span>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
