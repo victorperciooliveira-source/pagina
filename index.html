@@ -3,28 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Velha</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Meu Currículo Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="game-container">
-        <h1>Jogo da Velha</h1>
-        <div id="board" class="board">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
+    <header>
+        <div class="header-content">
+            <img src="https://via.placeholder.com/150" alt="Foto de Perfil" class="profile-pic">
+            <h1>Seu Nome Completo</h1>
+            <p class="job-title">Sua Posição Desejada</p>
         </div>
-        <div id="status">
-            <p id="turn">Vez do Jogador X</p>
-            <button id="reset">Reiniciar</button>
-        </div>
-    </div>
+    </header>
+
+    <main class="container">
+        <section class="contact-info">
+            <h2>Contato</h2>
+            <ul>
+                <li><i class="icon">📧</i><a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></li>
+                <li><i class="icon">📞</i> (XX) XXXX-XXXX</li>
+                <li><i class="icon">📍</i> Sua Cidade, Seu Estado</li>
+                <li><i class="icon">🔗</i><a href="https://www.linkedin.com/in/seu-perfil" target="_blank">LinkedIn</a></li>
+            </ul>
+        </section>
+        
+        <section class="summary">
+            <h2>Resumo Profissional</h2>
+            <p>Um parágrafo conciso sobre sua experiência, habilidades e objetivos profissionais. Destaque seus pontos fortes e o que você busca na sua carreira.</p>
+        </section>
+        
+        <section class="experience">
+            <h2>Experiência Profissional</h2>
+            <div class="job-entry">
+                <h3>Nome da Empresa</h3>
+                <h4>Seu Cargo | Mês Ano - Mês Ano</h4>
+                <ul>
+                    <li>Descrição da sua responsabilidade e conquistas. Use bullet points para facilitar a leitura.</li>
+                    <li>Exemplo: Aumentei a eficiência do processo em 15% através de novas metodologias.</li>
+                </ul>
+            </div>
+            <div class="job-entry">
+                <h3>Nome da Empresa Anterior</h3>
+                <h4>Seu Cargo | Mês Ano - Mês Ano</h4>
+                <ul>
+                    <li>Descrição das suas atividades e resultados.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="education">
+            <h2>Educação</h2>
+            <div class="education-entry">
+                <h3>Nome da Instituição</h3>
+                <p>Nome do Curso | Ano de Início - Ano de Conclusão</p>
+            </div>
+        </section>
+        
+        <section class="skills">
+            <h2>Habilidades</h2>
+            <ul id="skills-list" class="skills-list">
+                </ul>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Seu Nome. Todos os direitos reservados.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
