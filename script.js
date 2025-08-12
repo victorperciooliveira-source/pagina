@@ -1,75 +1,79 @@
-// Pegando os elementos principais
-const goku = document.getElementById('goku');
-const vegeta = document.getElementById('vegeta');
-const gokuAttack = document.getElementById('gokuAttack');
-const vegetaAttack = document.getElementById('vegetaAttack');
+// Seleção dos elementos
+const cells = document.querySelectorAll('.cell');
+const turnDisplay = document.getElementById('turn');
+const resetButton = document.getElementById('reset');
 
-// Função para movimentar Goku
-document.addEventListener('keydown', (e) => {
-    const gokuLeft = parseInt(goku.style.left);
-    const gokuBottom = parseInt(goku.style.bottom);
+let currentPlayer = 'X'; // Jogador atual
+let gameBoard = ['', '', '', '', '', '', '', '', '']; // Tabuleiro de jogo
+let gameOver = false;
+
+// Função para verificar se alguém venceu
+const checkWinner = () => {
+    const winningCombinations = [
+        [0, 1, 2], // Linha 1
+        [3, 4, 5], // Linha 2
+        [6, 7, 8], // Linha 3
+        [0, 3, 6], // Coluna 1
+        [1, 4, 7], // Coluna 2
+        [2, 5, 8], // Coluna 3
+        [0, 4, 8], // Diagonal 1
+        [2, 4, 6], // Diagonal 2
+    ];
+
+    // Verificando todas as combinações possíveis
+    for (let combination of winningCombinations) {
+        const [a, b, c] = combination;
+        if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+            gameOver = true;
+            setTimeout(() => {
+                alert(`${currentPlayer} venceu!`);
+                resetGame();
+            }, 100);
+            return;
+        }
+    }
+
+    // Verificando se o jogo deu empate
+    if (!gameBoard.includes('')) {
+        setTimeout(() => {
+            alert('Empate!');
+            resetGame();
+        }, 100);
+    }
+};
+
+// Função para reiniciar o jogo
+const resetGame = () => {
+    gameBoard = ['', '', '', '', '', '', '', '', ''];
+    gameOver = false;
+    currentPlayer = 'X';
+    turnDisplay.textContent = `Vez do Jogador ${currentPlayer}`;
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.style.pointerEvents = 'auto';
+    });
+};
+
+// Função de clique nas células
+const handleCellClick = (e) => {
+    const index = e.target.dataset.index;
     
-    if (e.key === 'ArrowLeft' && gokuLeft > 0) {
-        goku.style.left = gokuLeft - 10 + 'px';
-    }
-    if (e.key === 'ArrowRight' && gokuLeft < 740) {
-        goku.style.left = gokuLeft + 10 + 'px';
-    }
-    if (e.key === 'ArrowUp' && gokuBottom < 300) {
-        goku.style.bottom = gokuBottom + 10 + 'px';
-    }
-    if (e.key === 'ArrowDown' && gokuBottom > 0) {
-        goku.style.bottom = gokuBottom - 10 + 'px';
-    }
+    if (gameBoard[index] || gameOver) return; // Verifica se a célula já foi clicada ou se o jogo acabou
 
-    // Kamehameha (Ataque de Goku)
-    if (e.key === ' ') {
-        attackGoku();
-    }
+    gameBoard[index] = currentPlayer;
+    e.target.textContent = currentPlayer;
+
+    checkWinner();
+
+    // Alterna o jogador
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    turnDisplay.textContent = `Vez do Jogador ${currentPlayer}`;
+};
+
+// Adicionando evento de clique nas células
+cells.forEach(cell => {
+    cell.addEventListener('click', handleCellClick);
 });
 
-// Função para movimentar Vegeta
-document.addEventListener('keydown', (e) => {
-    const vegetaLeft = parseInt(vegeta.style.left);
-    const vegetaBottom = parseInt(vegeta.style.bottom);
-    
-    if (e.key === 'a' && vegetaLeft > 0) {
-        vegeta.style.left = vegetaLeft - 10 + 'px';
-    }
-    if (e.key === 'd' && vegetaLeft < 740) {
-        vegeta.style.left = vegetaLeft + 10 + 'px';
-    }
-    if (e.key === 'w' && vegetaBottom < 300) {
-        vegeta.style.bottom = vegetaBottom + 10 + 'px';
-    }
-    if (e.key === 's' && vegetaBottom > 0) {
-        vegeta.style.bottom = vegetaBottom - 10 + 'px';
-    }
-
-    // Final Flash (Ataque de Vegeta)
-    if (e.key === 'f') {
-        attackVegeta();
-    }
-});
-
-// Função de ataque de Goku (Kamehameha)
-function attackGoku() {
-    gokuAttack.style.visibility = 'visible';
-    gokuAttack.style.left = parseInt(goku.style.left) + 60 + 'px';
-    gokuAttack.style.bottom = parseInt(goku.style.bottom) + 30 + 'px';
-    gokuAttack.style.animation = 'attackAnimationGoku 2s forwards';
-    setTimeout(() => {
-        gokuAttack.style.visibility = 'hidden';
-    }, 2000);
-}
-
-// Função de ataque de Vegeta (Final Flash)
-function attackVegeta() {
-    vegetaAttack.style.visibility = 'visible';
-    vegetaAttack.style.left = parseInt(vegeta.style.left) - 10 + 'px';
-    vegetaAttack.style.bottom = parseInt(vegeta.style.bottom) + 30 + 'px';
-    vegetaAttack.style.animation = 'attackAnimationVegeta 2s forwards';
-    setTimeout(() => {
-        vegetaAttack.style.visibility = 'hidden';
-    }, 2000);
-}
+// Reiniciar o jogo ao clicar no botão de reset
+resetButton.addEventListener('click', resetGame);
