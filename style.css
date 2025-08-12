@@ -1,60 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    color: #eee;
+    font-family: sans-serif;
 }
 
-header {
-    background-color: #35424a;
-    color: #fff;
-    text-align: center;
-    padding: 60px 0;
+.grid {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 3em;
+.grid div {
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
 }
 
-.secao-principal, .formulario-secao {
-    padding: 40px;
-    margin: 20px auto;
-    max-width: 800px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.snake {
+    background-color: #00ff00; /* Verde */
 }
 
-button, input[type="submit"] {
-    display: inline-block;
-    background: #e8491d;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover, input[type="submit"]:hover {
-    background: #333;
-}
-
-input[type="text"], input[type="email"] {
-    width: calc(100% - 24px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #35424a;
-    color: #fff;
-    margin-top: 20px;
+.food {
+    background-color: #ff0000; /* Vermelho */
 }
