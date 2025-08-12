@@ -5,58 +5,67 @@
     box-sizing: border-box;
 }
 
-/* Corpo e área do jogo */
+/* Estilos principais */
 body {
-    background-color: #f0f0f0;
+    background-color: #87CEEB;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #333;
 }
 
-/* Área de Jogo */
+/* Área do jogo */
 #gameArea {
     position: relative;
     width: 800px;
     height: 400px;
-    background-color: #87CEEB;
+    background-color: #4B8BBE;
     border: 2px solid #333;
     overflow: hidden;
-}
-
-/* Caracteres */
-.character {
-    position: absolute;
-    bottom: 0;
-    width: 50px;
-    height: 100px;
-    background-color: #FFD700;
     border-radius: 10px;
 }
 
-/* Personagem Naruto */
-#naruto {
+/* Personagem */
+.character {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 10px;
+}
+
+/* Goku */
+#goku {
     background-color: orange;
+    left: 50px;
 }
 
-/* Personagem Sasuke */
-#sasuke {
-    background-color: darkblue;
+/* Vegeta */
+#vegeta {
+    background-color: blue;
+    left: 680px;
 }
 
-/* Efeitos de ataque */
+/* Ataques */
 .attack {
     position: absolute;
     width: 10px;
     height: 10px;
     background-color: red;
     border-radius: 50%;
-    animation: attackAnimation 0.5s forwards;
+    visibility: hidden;
 }
 
-@keyframes attackAnimation {
-    to {
-        opacity: 0;
-        transform: translateX(200px);
-    }
+/* Efeitos de ataque */
+@keyframes attackAnimationGoku {
+    0% { left: 60px; }
+    100% { left: 800px; visibility: hidden; }
+}
+
+@keyframes attackAnimationVegeta {
+    0% { left: 740px; }
+    100% { left: 0; visibility: hidden; }
 }
