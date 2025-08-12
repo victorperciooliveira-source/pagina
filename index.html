@@ -3,24 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App de Música</title>
+    <title>Batalha Naruto</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="player-container">
-        <h1>Meu App de Música</h1>
-        
-        <div class="music-player">
-            <h2 id="songTitle">Música 1</h2>
-            
-            <audio id="audioPlayer" src="musicas/musica.mp3" preload="auto"></audio>
-            
-            <div class="controls">
-                <button id="playPauseBtn">▶️</button>
-                <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
-                <span id="volumeLabel">Volume: 100%</span>
-            </div>
-        </div>
+    <div id="gameArea">
+        <div id="naruto" class="character" style="left: 50px;"></div>
+        <div id="sasuke" class="character" style="left: 400px;"></div>
     </div>
 
     <script src="script.js"></script>
