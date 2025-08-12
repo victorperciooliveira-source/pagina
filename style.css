@@ -1,134 +1,60 @@
-/* Configurações básicas */
 body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
 }
 
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
-}
-
-/* Cabeçalho */
 header {
-    background-color: #007BFF;
+    background-color: #35424a;
     color: #fff;
     text-align: center;
-    padding: 40px 0;
+    padding: 60px 0;
 }
 
-.header-content h1 {
+header h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 3em;
 }
 
-.header-content .job-title {
-    font-size: 1.2em;
-    font-weight: 400;
+.secao-principal, .formulario-secao {
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #fff;
-    margin-bottom: 10px;
-}
-
-/* Seções do currículo */
-section {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-}
-
-section:last-of-type {
-    border-bottom: none;
-}
-
-h2 {
-    color: #007BFF;
-    border-bottom: 2px solid #007BFF;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-}
-
-h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-h4 {
-    margin-top: 0;
-    font-style: italic;
-    color: #555;
-    font-weight: 400;
-}
-
-ul {
-    padding-left: 20px;
-    margin: 0;
-}
-
-li {
-    margin-bottom: 8px;
-}
-
-/* Estilos de link e ícones */
-a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.icon {
-    margin-right: 10px;
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding-left: 0;
-    gap: 10px;
-}
-
-.skills-list li {
-    background-color: #007BFF;
+button, input[type="submit"] {
+    display: inline-block;
+    background: #e8491d;
     color: #fff;
-    padding: 5px 10px;
+    padding: 12px 20px;
+    border: none;
     border-radius: 5px;
-    font-size: 0.9em;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-/* Rodapé */
-.footer {
+button:hover, input[type="submit"]:hover {
+    background: #333;
+}
+
+input[type="text"], input[type="email"] {
+    width: calc(100% - 24px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background-color: #35424a;
     color: #fff;
     margin-top: 20px;
-}
-
-/* Responsividade básica */
-@media (max-width: 768px) {
-    .container {
-        margin: 10px;
-        padding: 15px;
-    }
-    .header-content h1 {
-        font-size: 2em;
-    }
 }

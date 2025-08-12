@@ -1,20 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Array com suas habilidades e cursos
-    const skillsAndCourses = [
-        "Curso de Mecânica Básica",
-        "Inspetor de Qualidade",
-        "Auxiliar Administrativo",
-        // Adicione outras habilidades que você tenha, como "Pacote Office", "Comunicação", etc.
-    ];
-
-    const skillsList = document.getElementById('skills-list');
-
-    // Adiciona cada item como uma tag na seção de habilidades
-    skillsAndCourses.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        skillsList.appendChild(li);
+    // Ação do botão "Saiba Mais"
+    const btnSaibaMais = document.getElementById('btn-saiba-mais');
+    btnSaibaMais.addEventListener('click', () => {
+        alert('Você clicou no botão "Saiba Mais"! Aqui você poderia redirecionar para outra página.');
     });
 
-    console.log("Página de currículo de primeiro emprego carregada com sucesso!");
+    // Ação do formulário
+    const formulario = document.getElementById('formulario-contato');
+    formulario.addEventListener('submit', (e) => {
+        e.preventDefault(); // Impede o envio padrão do formulário
+        
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+
+        if (nome && email) {
+            console.log(`Dados enviados: Nome - ${nome}, Email - ${email}`);
+            alert('Obrigado por se cadastrar! Seus dados foram enviados com sucesso.');
+            formulario.reset(); // Limpa o formulário
+        } else {
+            alert('Por favor, preencha todos os campos do formulário.');
+        }
+    });
 });
