@@ -1,34 +1,42 @@
-const grid = document.querySelector('.grid');
-const scoreDisplay = document.querySelector('.score span');
-const width = 15;
-let currentSnake = [2, 1, 0]; // Posições da cobrinha no grid
-let direction = 1; // 1 = direita, -1 = esquerda, width = baixo, -width = cima
-let foodIndex = 0;
-let score = 0;
-let squares = [];
+const mario = document.getElementById('mario');
+let isJumping = false;
+let marioPosition = 10;
 
-function createGrid() {
-    for (let i = 0; i < width * width; i++) {
-        const square = document.createElement('div');
-        grid.appendChild(square);
-        squares.push(square);
+// Função para pular
+function jump() {
+    if (isJumping) return;
+    isJumping = true;
+    let jumpHeight = 150;
+    let jumpInterval = setInterval(() => {
+        if (jumpHeight <= 0) {
+            clearInterval(jumpInterval);
+            // Descida (gravidade)
+            let fallInterval = setInterval(() => {
+                let currentBottom = parseInt(mario.style.bottom || 0);
+                if (currentBottom <= 0) {
+                    clearInterval(fallInterval);
+                    isJumping = false;
+                }
+                mario.style.bottom = `${currentBottom - 5}px`;
+            }, 20);
+        }
+        let currentBottom = parseInt(mario.style.bottom || 0);
+        mario.style.bottom = `${currentBottom + 5}px`;
+        jumpHeight -= 5;
+    }, 20);
+}
+
+// Movimentação do Mario
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+        marioPosition += 5;
+        mario.style.left = `${marioPosition}px`;
     }
-}
-
-createGrid();
-
-// Adiciona a cobrinha no grid
-currentSnake.forEach(index => squares[index].classList.add('snake'));
-
-function move() {
-    // Remove a "cauda" da cobrinha
-    const tail = currentSnake.pop();
-    squares[tail].classList.remove('snake');
-
-    // Adiciona uma nova "cabeça" na direção do movimento
-    const newHead = currentSnake[0] + direction;
-    currentSnake.unshift(newHead);
-    squares[newHead].classList.add('snake');
-}
-
-setInterval(move, 1000); // Move a cobrinha a cada 1 segundo
+    if (event.key === 'ArrowLeft') {
+        marioPosition -= 5;
+        mario.style.left = `${marioPosition}px`;
+    }
+    if (event.key === 'ArrowUp') {
+        jump();
+    }
+});
