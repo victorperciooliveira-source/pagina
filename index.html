@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Mario Básico</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mario Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="game-container">
-        <div id="mario"></div>
+  <div class="game-board day" id="gameBoard">
+    <!-- HUD -->
+    <div id="score" class="score-board">Score: 0</div>
+    <div id="level" class="score-board">Fase: 1</div>
+
+    <!-- Nuvens -->
+    <img src="clouds.png" class="clouds cloud-light" alt="Nuvens">
+
+    <!-- Mario -->
+    <img src="mario.gif" class="mario" id="mario" alt="Mario">
+
+    <!-- Cano com texto -->
+    <div class="pipe" id="pipe">
+      <img src="pipe.png" alt="Cano">
+      <span class="pipe-text">2ºDDS</span>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Tela de game over -->
+    <div class="game-over hidden" id="gameOver">
+      <img src="game-over.png" alt="Game Over">
+    </div>
+  </div>
 </body>
 </html>
