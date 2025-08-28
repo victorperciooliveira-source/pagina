@@ -64,9 +64,9 @@ function startGame() {
 function changeWeather(lv) {
   gameBoard.className = "game-board";
   if (lv % 4 === 1) gameBoard.classList.add("day");
-  if (lv % 4 === 2) gameBoard.classList.add("afternoon");
-  if (lv % 4 === 3) gameBoard.classList.add("night");
-  if (lv % 4 === 0) {
+  else if (lv % 4 === 2) gameBoard.classList.add("afternoon");
+  else if (lv % 4 === 3) gameBoard.classList.add("night");
+  else if (lv % 4 === 0) {
     gameBoard.classList.add("rain");
     startRain();
   }
@@ -74,6 +74,11 @@ function changeWeather(lv) {
 
 // Criar chuva
 function startRain() {
+  // Clear any existing rain to prevent duplication
+  const existingDrops = gameBoard.querySelectorAll('.rain-drop');
+  existingDrops.forEach(drop => drop.remove());
+
+  // Create new drops
   for (let i = 0; i < 20; i++) {
     const drop = document.createElement("div");
     drop.classList.add("rain-drop");

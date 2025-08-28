@@ -1,8 +1,10 @@
+/* Geral */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 img {
   user-select: none;
   -webkit-user-drag: none;
@@ -38,6 +40,7 @@ img {
   text-shadow: 1px 1px 2px #000;
   pointer-events: none;
 }
+
 #level.score-board { top: 50px; }
 
 /* Mario */
@@ -46,6 +49,7 @@ img {
   bottom: 0;
   width: 150px;
 }
+
 .jump { animation: jump 500ms ease-out; }
 
 /* Cano */
@@ -56,6 +60,7 @@ img {
   animation: pipe-animation 1.5s linear infinite;
   text-align: center;
 }
+
 .pipe-text {
   position: absolute;
   top: 5px;
@@ -65,7 +70,11 @@ img {
   color: #fff;
   text-shadow: 1px 1px 2px #000;
 }
-.pipe img { width: 100%; display: block; }
+
+.pipe img {
+  width: 100%;
+  display: block;
+}
 
 /* Nuvens */
 .clouds {
@@ -74,6 +83,7 @@ img {
   width: 550px;
   animation: clouds-animation 20s linear infinite;
 }
+
 .cloud-light { filter: brightness(120%); }
 .cloud-dark { filter: brightness(70%); }
 
@@ -97,22 +107,26 @@ img {
   transform: translate(-50%, -50%);
   z-index: 10;
 }
+
 .hidden { display: none; }
 
 /* Animações */
 @keyframes pipe-animation {
-  from { right: -80%; }
+  from { right: -80px; }
   to { right: 100%; }
 }
+
 @keyframes jump {
   0% { bottom: 0; }
   40%, 60% { bottom: 180px; }
   100% { bottom: 0; }
 }
+
 @keyframes clouds-animation {
   0% { left: 100%; }
   100% { left: -550px; }
 }
+
 @keyframes rain-fall {
   to { transform: translateY(520px); }
 }
