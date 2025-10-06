@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mario Game</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="game-board day" id="gameBoard">
-    <div id="score" class="score-board">Score: 0</div>
-    <div id="level" class="score-board">Fase: 1</div>
-    
-    <img src="img/clouds.png" class="clouds cloud-light" alt="Nuvens">
-    
-    <img src="img/mario.gif" class="mario" id="mario" alt="Mario">
-    
-    <div class="pipe" id="pipe">
-      <img src="img/pipe.png" alt="Cano">
-      <span class="pipe-text">2ºDDS</span>
+    <div class="calculadora">
+        <input type="text" class="visor" id="visor" disabled value="">
+
+        <div class="teclado">
+            <button class="operador" onclick="limparVisor()">C</button>
+            <button class="operador" onclick="apagarUltimo()">←</button>
+            <button class="operador" onclick="adicionar('/')">÷</button>
+            <button class="operador" onclick="adicionar('*')">x</button>
+
+            <button onclick="adicionar('7')">7</button>
+            <button onclick="adicionar('8')">8</button>
+            <button onclick="adicionar('9')">9</button>
+            <button class="operador" onclick="adicionar('-')">-</button>
+
+            <button onclick="adicionar('4')">4</button>
+            <button onclick="adicionar('5')">5</button>
+            <button onclick="adicionar('6')">6</button>
+            <button class="operador" onclick="adicionar('+')">+</button>
+
+            <button onclick="adicionar('1')">1</button>
+            <button onclick="adicionar('2')">2</button>
+            <button onclick="adicionar('3')">3</button>
+            <button class="igual" onclick="calcular()">=</button>
+
+            <button class="zero" onclick="adicionar('0')">0</button>
+            <button onclick="adicionar('.')">,</button>
+        </div>
     </div>
-    
-    <div class="game-over hidden" id="gameOver">
-      <img src="img/game-over.png" alt="Game Over">
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
