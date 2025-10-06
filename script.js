@@ -1,99 +1,39 @@
-const mario = document.getElementById("mario");
-const pipe = document.getElementById("pipe");
-const gameBoard = document.getElementById("gameBoard");
-const scoreDisplay = document.getElementById("score");
-const levelDisplay = document.getElementById("level");
-const gameOverScreen = document.getElementById("gameOver");
 
-// Áudios
-const jumpSound = new Audio("jump.mp3");
-const gameOverSound = new Audio("8d82b5_SMW_Game_Over_Sound_Effect.mp3");
+const visor = document.getElementById('visor');
 
-// Variáveis de controle
-let score = 0;
-let level = 1;
-let isGameOver = false;
-let gameLoop;
-
-// Função de pulo
-function jump() {
-  if (!mario.classList.contains("jump") && !isGameOver) {
-    mario.classList.add("jump");
-    jumpSound.play();
-    setTimeout(() => mario.classList.remove("jump"), 500);
-  }
+// Função para adicionar números e operadores ao visor
+function adicionar(valor) {
+    visor.value += valor;
 }
 
-// Loop principal
-function startGame() {
-  gameLoop = setInterval(() => {
-    const pipePosition = pipe.offsetLeft;
-    const marioBottom = +window
-      .getComputedStyle(mario)
-      .bottom.replace("px", "");
+// Função para limpar completamente o visor
+function limparVisor() {
+    visor.value = '';
+}
 
-    // Colisão
-    if (pipePosition > 0 && pipePosition < 80 && marioBottom < 80) {
-      isGameOver = true;
-      pipe.style.animation = "none";
-      pipe.style.left = `${pipePosition}px`;
+// Função para apagar o último caractere
+function apagarUltimo() {
+    visor.value = visor.value.slice(0, -1);
+}
 
-      mario.style.animation = "none";
-      mario.style.bottom = `${marioBottom}px`;
+// Função para calcular o resultado
+function calcular() {
+    try {
+        // O método eval() é usado para avaliar a expressão matemática como código
+        // É simples para este projeto, mas CUIDADO: em projetos reais, é
+        // melhor usar uma biblioteca ou implementar sua própria lógica de parsing
+        // para garantir a segurança.
+        
+        // Substitui "x" por "*" (multiplicação) para o eval() entender
+        let expressao = visor.value.replace(/x/g, '*'); 
 
-      gameOverSound.play();
-      gameOverScreen.classList.remove("hidden");
-
-      clearInterval(gameLoop);
-    } else if (!isGameOver) {
-      // Pontuação
-      score++;
-      scoreDisplay.textContent = "Score: " + score;
-
-      // Mudança de fase a cada 200 pontos
-      if (score % 200 === 0) {
-        level++;
-        levelDisplay.textContent = "Fase: " + level;
-        changeWeather(level);
-      }
+        // Adiciona uma verificação para a expressão não ficar vazia ou inválida
+        if (expressao) {
+            visor.value = eval(expressao);
+        }
+        
+    } catch (e) {
+        // Se a expressão for inválida (ex: 5++), mostra "Erro"
+        visor.value = 'Erro';
     }
-  }, 20);
 }
-
-// Mudança de clima
-function changeWeather(lv) {
-  gameBoard.className = "game-board";
-  if (lv % 4 === 1) gameBoard.classList.add("day");
-  else if (lv % 4 === 2) gameBoard.classList.add("afternoon");
-  else if (lv % 4 === 3) gameBoard.classList.add("night");
-  else if (lv % 4 === 0) {
-    gameBoard.classList.add("rain");
-    startRain();
-  }
-}
-
-// Criar chuva
-function startRain() {
-  // Clear any existing rain to prevent duplication
-  const existingDrops = gameBoard.querySelectorAll('.rain-drop');
-  existingDrops.forEach(drop => drop.remove());
-
-  // Create new drops
-  for (let i = 0; i < 20; i++) {
-    const drop = document.createElement("div");
-    drop.classList.add("rain-drop");
-    drop.style.left = Math.random() * window.innerWidth + "px";
-    drop.style.animationDuration = 0.5 + Math.random() * 0.5 + "s";
-    gameBoard.appendChild(drop);
-
-    setTimeout(() => drop.remove(), 1000);
-  }
-  if (!isGameOver) setTimeout(startRain, 500);
-}
-
-// Eventos
-document.addEventListener("keydown", jump);
-document.addEventListener("click", jump);
-
-// Iniciar jogo
-startGame();
