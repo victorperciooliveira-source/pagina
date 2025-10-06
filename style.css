@@ -1,140 +1,75 @@
-/* Geral */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f7f6;
+    font-family: sans-serif;
 }
 
-img {
-  user-select: none;
-  -webkit-user-drag: none;
-  image-rendering: pixelated;
+.calculadora {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    width: 300px; /* Largura da calculadora */
 }
 
-/* Área do jogo */
-.game-board {
-  width: 100%;
-  height: 500px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 15px solid rgb(8, 149, 24);
-  background: linear-gradient(#156c8f, #adccd8);
-  transition: background 1.2s ease;
+.visor {
+    width: 100%;
+    height: 60px;
+    background-color: #444;
+    color: #fff;
+    font-size: 2em;
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 
-/* Climas */
-.game-board.day { background: linear-gradient(#4fc3f7, #adccd8); }
-.game-board.afternoon { background: linear-gradient(#ff9800, #ffcc80); }
-.game-board.night { background: linear-gradient(#0d47a1, #263238); }
-.game-board.rain { background: linear-gradient(#607d8b, #90a4ae); }
-
-/* HUD */
-.score-board {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font: 700 32px/1 Arial, sans-serif;
-  color: #fff;
-  text-shadow: 1px 1px 2px #000;
-  pointer-events: none;
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas com tamanhos iguais */
+    gap: 10px;
 }
 
-#level.score-board { top: 50px; }
-
-/* Mario */
-.mario {
-  position: absolute;
-  bottom: 0;
-  width: 150px;
+.teclado button {
+    padding: 15px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #666;
+    color: #fff;
+    transition: background-color 0.1s;
 }
 
-.jump { animation: jump 500ms ease-out; }
-
-/* Cano */
-.pipe {
-  position: absolute;
-  bottom: 0;
-  width: 80px;
-  animation: pipe-animation 1.5s linear infinite;
-  text-align: center;
+.teclado button:hover {
+    background-color: #888;
 }
 
-.pipe-text {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font: 700 16px Arial, sans-serif;
-  color: #fff;
-  text-shadow: 1px 1px 2px #000;
+/* Estilos específicos para classes */
+.operador {
+    background-color: #ff9500;
 }
 
-.pipe img {
-  width: 100%;
-  display: block;
+.operador:hover {
+    background-color: #ffb74d;
 }
 
-/* Nuvens */
-.clouds {
-  position: absolute;
-  top: 50px;
-  width: 550px;
-  animation: clouds-animation 20s linear infinite;
+.igual {
+    grid-column: span 1; /* Ocupa uma coluna, mas será realinhado pelo layout grid */
+    background-color: #2ecc71;
 }
 
-.cloud-light { filter: brightness(120%); }
-.cloud-dark { filter: brightness(70%); }
-
-/* Gotas de chuva */
-.rain-drop {
-  position: absolute;
-  top: -12px;
-  width: 2px;
-  height: 15px;
-  background: #ffffff;
-  opacity: 0.6;
-  animation: rain-fall 0.7s linear infinite;
-  pointer-events: none;
+.igual:hover {
+    background-color: #48d484;
 }
 
-/* Game Over */
-.game-over {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-.hidden { display: none; }
-
-/* Animações */
-@keyframes pipe-animation {
-  from { right: -80px; }
-  to { right: 100%; }
-}
-
-@keyframes jump {
-  0% { bottom: 0; }
-  40%, 60% { bottom: 180px; }
-  100% { bottom: 0; }
-}
-
-@keyframes clouds-animation {
-  0% { left: 100%; }
-  100% { left: -550px; }
-}
-
-@keyframes rain-fall {
-  to { transform: translateY(520px); }
-}
-
-/* Responsivo */
-@media (max-width: 600px) {
-  .game-board { height: 420px; }
-  .mario { width: 120px; }
-  .pipe { width: 70px; }
-  .score-board { font-size: 26px; }
+.zero {
+    grid-column: span 2; /* Faz o botão '0' ocupar o espaço de 2 colunas */
 }
