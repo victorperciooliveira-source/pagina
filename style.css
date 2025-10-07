@@ -1,1 +1,87 @@
+/* Estilos globais e de fundo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f7f6; /* Fundo suave */
+    font-family: Arial, sans-serif;
+}
+
+/* Container principal da calculadora */
+.calculadora {
+    background-color: #222; /* Fundo escuro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    width: 300px;
+}
+
+/* Visor de resultado */
+.visor {
+    width: 100%;
+    height: 60px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: right;
+    padding: 10px;
+    font-size: 2em;
+    box-sizing: border-box; 
+    outline: none;
+    user-select: none; /* Impede a seleção de texto no visor */
+}
+
+/* Layout dos botões usando CSS Grid */
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas de tamanho igual */
+    gap: 10px; /* Espaço entre os botões */
+}
+
+/* Estilo padrão para todos os botões */
+.botao {
+    padding: 20px 0;
+    border: none;
+    border-radius: 50%; /* Botões redondos */
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    user-select: none;
+}
+
+/* Estilos específicos por tipo de botão */
+.numero, .ponto, .zero {
+    background-color: #555;
+    color: #fff;
+}
+
+.operador, .limpar, .backspace {
+    background-color: #ff9500; /* Laranja (iOS style) */
+    color: #fff;
+}
+
+.igual {
+    background-color: #2a8fdf; /* Azul */
+    color: #fff;
+}
+
+/* Ajustes de layout */
+.zero {
+    grid-column: span 2; /* O botão '0' ocupa duas colunas */
+    border-radius: 40px; /* Adapta o '0' para ser um retângulo arredondado */
+}
+
+/* Efeito ao passar o mouse */
+.botao:hover {
+    filter: brightness(1.2);
+}
+
+/* Efeito ao clicar */
+.botao:active {
+    transform: scale(0.95);
+}
 
