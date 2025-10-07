@@ -1,87 +1,42 @@
-/* Estilos globais e de fundo */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f4f7f6; /* Fundo suave */
-    font-family: Arial, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Completa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* Container principal da calculadora */
-.calculadora {
-    background-color: #222; /* Fundo escuro */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    width: 300px;
-}
+    <div class="calculadora">
+        <input type="text" id="visor" class="visor" value="" disabled>
 
-/* Visor de resultado */
-.visor {
-    width: 100%;
-    height: 60px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    text-align: right;
-    padding: 10px;
-    font-size: 2em;
-    box-sizing: border-box; 
-    outline: none;
-    user-select: none; /* Impede a seleção de texto no visor */
-}
+        <div class="teclado">
+            <button onclick="limparVisor()" class="botao limpar">C</button>
+            <button onclick="adicionarAoVisor('/')" class="botao operador">÷</button>
+            <button onclick="adicionarAoVisor('*')" class="botao operador">×</button>
+            <button onclick="apagarUltimo()" class="botao backspace">⌫</button>
 
-/* Layout dos botões usando CSS Grid */
-.teclado {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas de tamanho igual */
-    gap: 10px; /* Espaço entre os botões */
-}
+            <button onclick="adicionarAoVisor('7')" class="botao numero">7</button>
+            <button onclick="adicionarAoVisor('8')" class="botao numero">8</button>
+            <button onclick="adicionarAoVisor('9')" class="botao numero">9</button>
+            <button onclick="adicionarAoVisor('-')" class="botao operador">-</button>
 
-/* Estilo padrão para todos os botões */
-.botao {
-    padding: 20px 0;
-    border: none;
-    border-radius: 50%; /* Botões redondos */
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    user-select: none;
-}
+            <button onclick="adicionarAoVisor('4')" class="botao numero">4</button>
+            <button onclick="adicionarAoVisor('5')" class="botao numero">5</button>
+            <button onclick="adicionarAoVisor('6')" class="botao numero">6</button>
+            <button onclick="adicionarAoVisor('+')" class="botao operador">+</button>
 
-/* Estilos específicos por tipo de botão */
-.numero, .ponto, .zero {
-    background-color: #555;
-    color: #fff;
-}
+            <button onclick="adicionarAoVisor('1')" class="botao numero">1</button>
+            <button onclick="adicionarAoVisor('2')" class="botao numero">2</button>
+            <button onclick="adicionarAoVisor('3')" class="botao numero">3</button>
+            <button onclick="calcular()" class="botao igual" style="grid-row: span 2">=</button>
 
-.operador, .limpar, .backspace {
-    background-color: #ff9500; /* Laranja (iOS style) */
-    color: #fff;
-}
+            <button onclick="adicionarAoVisor('0')" class="botao numero zero">0</button>
+            <button onclick="adicionarAoVisor('.')" class="botao ponto">.</button>
+        </div>
+    </div>
 
-.igual {
-    background-color: #2a8fdf; /* Azul */
-    color: #fff;
-}
-
-/* Ajustes de layout */
-.zero {
-    grid-column: span 2; /* O botão '0' ocupa duas colunas */
-    border-radius: 40px; /* Adapta o '0' para ser um retângulo arredondado */
-}
-
-/* Efeito ao passar o mouse */
-.botao:hover {
-    filter: brightness(1.2);
-}
-
-/* Efeito ao clicar */
-.botao:active {
-    transform: scale(0.95);
-}
-
+    <script src="script.js"></script>
+</body>
+</html>
