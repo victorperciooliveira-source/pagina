@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Completa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="calculadora">
+        <input type="text" id="visor" class="visor" value="" disabled>
+
+        <div class="teclado">
+            <button onclick="limparVisor()" class="botao limpar">C</button>
+            <button onclick="adicionarAoVisor('/')" class="botao operador">÷</button>
+            <button onclick="adicionarAoVisor('*')" class="botao operador">×</button>
+            <button onclick="apagarUltimo()" class="botao backspace">⌫</button>
+
+            <button onclick="adicionarAoVisor('7')" class="botao numero">7</button>
+            <button onclick="adicionarAoVisor('8')" class="botao numero">8</button>
+            <button onclick="adicionarAoVisor('9')" class="botao numero">9</button>
+            <button onclick="adicionarAoVisor('-')" class="botao operador">-</button>
+
+            <button onclick="adicionarAoVisor('4')" class="botao numero">4</button>
+            <button onclick="adicionarAoVisor('5')" class="botao numero">5</button>
+            <button onclick="adicionarAoVisor('6')" class="botao numero">6</button>
+            <button onclick="adicionarAoVisor('+')" class="botao operador">+</button>
+
+            <button onclick="adicionarAoVisor('1')" class="botao numero">1</button>
+            <button onclick="adicionarAoVisor('2')" class="botao numero">2</button>
+            <button onclick="adicionarAoVisor('3')" class="botao numero">3</button>
+            <button onclick="calcular()" class="botao igual" style="grid-row: span 2">=</button>
+
+            <button onclick="adicionarAoVisor('0')" class="botao numero zero">0</button>
+            <button onclick="adicionarAoVisor('.')" class="botao ponto">.</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
